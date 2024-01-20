@@ -24,7 +24,7 @@ class MovingDots(Scene):
         # Calculate the center of the dots
         center_of_dots = dots.get_center()
         # Shift the dots to make the center coincide with the origin
-        self.play(dots.animate.shift(-center_of_dots), run_time=1)
+        self.play(dots.animate.shift(-center_of_dots * 2), run_time=1)
         self.wait()
 
     def create_grid(self, rows, cols, spacing=1):
