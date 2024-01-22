@@ -15,12 +15,11 @@ class MovingGrid(Scene):
     #     dots = self.create_grid(6, 6)
     #     #lines = self.create_lines(dots)
 
-    #     # Move the entire VGroup from left to right
+    #     Move the entire VGroup from left to right
     #     self.play(dots.animate.shift(RIGHT * 5), run_time=3)
     #     self.wait()
 
     def construct(self):
-
         title = Text("Moving the Grid")  # Use Text instead of a plain string
         basel = Text("Wind effect")
 
@@ -43,8 +42,24 @@ class MovingGrid(Scene):
         # Animate the dots from the lower left corner to the upper right
         self.play(dots.animate.move_to(diagonal_vector), run_time=3)
 
+        rows, cols = 4, 4
+        height, width = 6, 6
+
         # diagonal_vector = RIGHT * 4 + UP * 2
         # self.play(dots.animate.move_to(diagonal_vector), run_time=2)
+        for col in range(3, -1, -1):
+            for row in range(rows):
+                print("col:", col, " | row", row)
+                dot = dots[row * cols + col]
+                self.play(
+                    Create(dot),
+                    Flash(dot, flash_radius=0.1, line_length=0.2, color=WHITE),
+                    run_time=0.5
+                )
+                self.wait(0.1)  # Adjust the wait time as needed
+
+        self.wait()
+
         self.wait()
 
 
@@ -57,6 +72,7 @@ class MovingGrid(Scene):
         self.add(dots)
         return dots
 
+
     def create_lines(self, dots):
         lines = VGroup()
         for i in range(len(dots) - 1):
@@ -64,4 +80,3 @@ class MovingGrid(Scene):
             lines.add(line)
         self.add(lines)
         return lines
-
