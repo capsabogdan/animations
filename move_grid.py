@@ -20,6 +20,8 @@ class MovingGrid(Scene):
     #     self.wait()
 
     def construct(self):
+
+        # Title
         title = Text("Moving the Grid")  # Use Text instead of a plain string
         basel = Text("Wind effect")
 
@@ -33,7 +35,7 @@ class MovingGrid(Scene):
            # Write(basel, shift=UP),
         )
         self.wait()
-        
+
         dots = self.create_grid(4, 4)
         dots.move_to(ORIGIN)
         # Calculate the vector pointing from the lower left corner to the upper right
@@ -44,6 +46,15 @@ class MovingGrid(Scene):
 
         rows, cols = 4, 4
         height, width = 6, 6
+
+        # Add text in the top-left corner
+        apply_weights_text = Text("Apply Weights").to_corner(UL)
+        self.play(Write(apply_weights_text))
+
+        # Draw a bell curve under the title
+        bell_curve = self.create_bell_curve().next_to(apply_weights_text, DOWN, buff=0.5)
+        self.play(Create(bell_curve))
+
 
         # diagonal_vector = RIGHT * 4 + UP * 2
         # self.play(dots.animate.move_to(diagonal_vector), run_time=2)
@@ -57,8 +68,6 @@ class MovingGrid(Scene):
                     run_time=0.5
                 )
                 self.wait(0.1)  # Adjust the wait time as needed
-
-        self.wait()
 
         self.wait()
 
@@ -80,3 +89,14 @@ class MovingGrid(Scene):
             lines.add(line)
         self.add(lines)
         return lines
+
+
+    def create_bell_curve(self):
+        bell_curve = ParametricFunction(
+            lambda t: np.array([t, 1.5 * np.exp(-0.5 * (t - 2)**2), 0]),
+            t_range=[-1, 5],
+            color=YELLOW,
+            stroke_width=2,
+        )
+        bell_curve.scale(0.6)
+        return bell_curve
