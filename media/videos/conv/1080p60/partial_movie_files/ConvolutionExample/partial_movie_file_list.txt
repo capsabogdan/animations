@@ -1,0 +1,5 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/7799software/Documents/defence/animations_presentation/media/videos/conv/1080p60/partial_movie_files/ConvolutionExample/3977891868_715894778_223132457.mp4'
+file 'file:/Users/7799software/Documents/defence/animations_presentation/media/videos/conv/1080p60/partial_movie_files/ConvolutionExample/2852726489_1704852926_264800947.mp4'
+file 'file:/Users/7799software/Documents/defence/animations_presentation/media/videos/conv/1080p60/partial_movie_files/ConvolutionExample/2852726489_3057872048_3458538631.mp4'
+file 'file:/Users/7799software/Documents/defence/animations_presentation/media/videos/conv/1080p60/partial_movie_files/ConvolutionExample/2852726489_1704852926_613823365.mp4'
